@@ -1,0 +1,67 @@
+{
+ "lower_edges_MHz": [
+  400.2,
+  405.0,
+  410.0,
+  415.0,
+  420.0,
+  425.0,
+  430.0,
+  435.0,
+  440.0,
+  445.0,
+  450.0
+ ],
+ "upper_edges_MHz": [
+  720.0,
+  725.0,
+  730.0,
+  735.0,
+  740.0,
+  745.0,
+  750.0,
+  755.0,
+  760.0,
+  765.6
+ ],
+ "n_subbands": [
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+ ],
+ "n_configurations": 770,
+ "n_with_width_law": 770,
+ "width_fit": "unweighted least squares in log space, errors from the residual scatter",
+ "beta_median": -1.0625094246717355,
+ "beta_p16": -1.2565312511839903,
+ "beta_p84": -0.9630213411690712,
+ "beta_err_median": 0.20787978888657646,
+ "beta_median_with_data_below_440": -1.235247074870808,
+ "n_with_data_below_440": 276,
+ "beta_median_without_data_below_440": -1.009043313958813,
+ "n_without_data_below_440": 494,
+ "weighted_alternative": {
+  "beta_median": -1.1715547703430929,
+  "beta_p16": -1.413520691805332,
+  "beta_p84": -1.0857370490818676,
+  "beta_err_median": 0.21956551788380996,
+  "chi2_red_median": 2.4909955300877495
+ },
+ "fiducial": {
+  "lo": 400.2,
+  "hi": 765.6,
+  "nsub": 9.0,
+  "n_ok": 9.0,
+  "lowest_nu_eff": 421.8665563674796,
+  "n_below_440": 1.0,
+  "beta": -1.3613478999130297,
+  "beta_err": 0.22070306997821657,
+  "beta_w": -1.5395721614132611,
+  "beta_w_err": 0.2590729413371408,
+  "chi2_red_w": 4.864615337671365
+ }
+}

@@ -1,0 +1,241 @@
+{
+ "scattering_law": "tau(nu) = tau_ref (nu/nu_ref)^-4",
+ "tau_ref_ms": 7.976668769334831,
+ "nu_ref_MHz": 582.9,
+ "width_law": "sigma(nu) = sigma_0 (nu/nu_ref)^beta_inj",
+ "sigma_0_ms": 1.1211394951293474,
+ "width_reference_MHz": 582.9,
+ "beta_inj": [
+  0.0,
+  -1.0
+ ],
+ "lower_limits_MHz": [
+  400.2,
+  420.0,
+  440.0
+ ],
+ "upper_limit_MHz": 765.6,
+ "n_subbands": [
+  6,
+  9,
+  12
+ ],
+ "trials_per_configuration": 100,
+ "onset_mu_ms": 78.91706841864008,
+ "dedrift_slope_ms_per_MHz": -0.0004623181563491624,
+ "width_fit": "unweighted least squares in log space (as for the data)",
+ "recovered": {
+  "-1.0": {
+   "beta_mean_min": -1.0304881550845817,
+   "beta_mean_max": -0.96775986300868,
+   "beta_std_median": 0.1474333351136868,
+   "max_abs_lowest_sigma_bias_ms": 0.0446312305237897
+  },
+  "0.0": {
+   "beta_mean_min": -0.04264454068311053,
+   "beta_mean_max": 0.035557635601631235,
+   "beta_std_median": 0.1506079733229394,
+   "max_abs_lowest_sigma_bias_ms": 0.02357327517186647
+  }
+ },
+ "per_configuration": [
+  {
+   "lo": 400.2,
+   "nsub": 6,
+   "beta_inj": -1.0,
+   "beta_mean": -0.96775986300868,
+   "beta_std": 0.13005971282187417,
+   "beta_w_mean": -0.9521906876619406,
+   "lowest_sigma_bias_ms": -0.0446312305237897,
+   "lowest_sigma_true_ms": 1.5096645527400805,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 400.2,
+   "nsub": 6,
+   "beta_inj": 0.0,
+   "beta_mean": 0.035557635601631235,
+   "beta_std": 0.14195427862277868,
+   "beta_w_mean": 0.03683119179925041,
+   "lowest_sigma_bias_ms": -0.02357327517186647,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 400.2,
+   "nsub": 9,
+   "beta_inj": -1.0,
+   "beta_mean": -1.0114952279948448,
+   "beta_std": 0.11264994315909457,
+   "beta_w_mean": -0.9981156043109709,
+   "lowest_sigma_bias_ms": -0.008755592754005947,
+   "lowest_sigma_true_ms": 1.550804727838777,
+   "min_n_ok": 8
+  },
+  {
+   "lo": 400.2,
+   "nsub": 9,
+   "beta_inj": 0.0,
+   "beta_mean": 0.005023955159138613,
+   "beta_std": 0.12510515975399195,
+   "beta_w_mean": 0.013821964813925735,
+   "lowest_sigma_bias_ms": -0.011259378422801447,
+   "lowest_sigma_true_ms": 1.1211394951293472,
+   "min_n_ok": 9
+  },
+  {
+   "lo": 400.2,
+   "nsub": 12,
+   "beta_inj": -1.0,
+   "beta_mean": -1.0304881550845817,
+   "beta_std": 0.12879418707280377,
+   "beta_w_mean": -1.0070464112487796,
+   "lowest_sigma_bias_ms": -0.0009349688555178037,
+   "lowest_sigma_true_ms": 1.5727442375481089,
+   "min_n_ok": 12
+  },
+  {
+   "lo": 400.2,
+   "nsub": 12,
+   "beta_inj": 0.0,
+   "beta_mean": -0.031213124121012306,
+   "beta_std": 0.1402617234124906,
+   "beta_w_mean": -0.008773738456953306,
+   "lowest_sigma_bias_ms": 0.004122126744760424,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 12
+  },
+  {
+   "lo": 420.0,
+   "nsub": 6,
+   "beta_inj": -1.0,
+   "beta_mean": -0.9866798358543121,
+   "beta_std": 0.14420901069713732,
+   "beta_w_mean": -0.9709921911481476,
+   "lowest_sigma_bias_ms": -0.0341412536219865,
+   "lowest_sigma_true_ms": 1.4513002075717465,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 420.0,
+   "nsub": 6,
+   "beta_inj": 0.0,
+   "beta_mean": 0.01907200699390187,
+   "beta_std": 0.13887049333602763,
+   "beta_w_mean": 0.016969264886268768,
+   "lowest_sigma_bias_ms": -0.009715165735787457,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 420.0,
+   "nsub": 9,
+   "beta_inj": -1.0,
+   "beta_mean": -1.0237413225294267,
+   "beta_std": 0.1474333351136868,
+   "beta_w_mean": -1.0023089356343737,
+   "lowest_sigma_bias_ms": -0.006005814513585506,
+   "lowest_sigma_true_ms": 1.485067926037388,
+   "min_n_ok": 9
+  },
+  {
+   "lo": 420.0,
+   "nsub": 9,
+   "beta_inj": 0.0,
+   "beta_mean": -0.0064514266833024725,
+   "beta_std": 0.1516840704074904,
+   "beta_w_mean": 0.008907600497985654,
+   "lowest_sigma_bias_ms": -0.012035019504911482,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 9
+  },
+  {
+   "lo": 420.0,
+   "nsub": 12,
+   "beta_inj": -1.0,
+   "beta_mean": -1.0258161297337198,
+   "beta_std": 0.17692013449002525,
+   "beta_w_mean": -0.995335712677927,
+   "lowest_sigma_bias_ms": -0.013964166739077966,
+   "lowest_sigma_true_ms": 1.5036060695059135,
+   "min_n_ok": 12
+  },
+  {
+   "lo": 420.0,
+   "nsub": 12,
+   "beta_inj": 0.0,
+   "beta_mean": 0.009458680132470653,
+   "beta_std": 0.1506079733229394,
+   "beta_w_mean": 0.025616535409960024,
+   "lowest_sigma_bias_ms": -0.0068206276308782066,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 12
+  },
+  {
+   "lo": 440.0,
+   "nsub": 6,
+   "beta_inj": -1.0,
+   "beta_mean": -0.9946910740383536,
+   "beta_std": 0.16162691402377238,
+   "beta_w_mean": -0.9849578425922891,
+   "lowest_sigma_bias_ms": -0.01832124330033791,
+   "lowest_sigma_true_ms": 1.3926186400753036,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 440.0,
+   "nsub": 6,
+   "beta_inj": 0.0,
+   "beta_mean": -0.004767789141512633,
+   "beta_std": 0.1683374328025356,
+   "beta_w_mean": 0.006896389185838435,
+   "lowest_sigma_bias_ms": -0.008364617095102611,
+   "lowest_sigma_true_ms": 1.1211394951293472,
+   "min_n_ok": 6
+  },
+  {
+   "lo": 440.0,
+   "nsub": 9,
+   "beta_inj": -1.0,
+   "beta_mean": -0.9804857184795918,
+   "beta_std": 0.1522275161720069,
+   "beta_w_mean": -0.9821987562571155,
+   "lowest_sigma_bias_ms": -0.003921847285900171,
+   "lowest_sigma_true_ms": 1.4155708064637436,
+   "min_n_ok": 9
+  },
+  {
+   "lo": 440.0,
+   "nsub": 9,
+   "beta_inj": 0.0,
+   "beta_mean": -0.04264454068311053,
+   "beta_std": 0.1610884998781503,
+   "beta_w_mean": -0.022052319910146986,
+   "lowest_sigma_bias_ms": 0.0019252560937637053,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 9
+  },
+  {
+   "lo": 440.0,
+   "nsub": 12,
+   "beta_inj": -1.0,
+   "beta_mean": -1.0200223306078662,
+   "beta_std": 0.15859144297857067,
+   "beta_w_mean": -0.993312479165329,
+   "lowest_sigma_bias_ms": -0.014403561214913374,
+   "lowest_sigma_true_ms": 1.4300276440350987,
+   "min_n_ok": 12
+  },
+  {
+   "lo": 440.0,
+   "nsub": 12,
+   "beta_inj": 0.0,
+   "beta_mean": 0.0010125778944281372,
+   "beta_std": 0.17312126432126546,
+   "beta_w_mean": 0.029443746437253157,
+   "lowest_sigma_bias_ms": -0.006156124465740653,
+   "lowest_sigma_true_ms": 1.1211394951293474,
+   "min_n_ok": 12
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "tag": "main",
+ "alphas": [
+  -4.3,
+  -4.15,
+  -4.0,
+  -3.85,
+  -3.7
+ ],
+ "n_trials": 100,
+ "n_samples_observed": 162,
+ "n_samples_extended": 600,
+ "scattering_law": "tau(nu) = tau_ref (nu/nu_ref)^alpha",
+ "tau_ref_ms": 7.976668769334831,
+ "nu_ref_MHz": 582.9,
+ "width_law": "sigma(nu) = sigma_0 (nu/nu_ref)^width_index",
+ "width_mode": "fixed",
+ "sigma_0_ms": 1.1211394951293474,
+ "width_index": 0.0,
+ "width_reference_MHz": 582.9,
+ "sigma_range_ms": [
+  1.1211394951293474,
+  1.1211394951293474
+ ],
+ "onset_mu_ms": 78.91706841864008,
+ "dedrift_slope_ms_per_MHz": -0.0004623181563491624,
+ "spectral_envelope": "catalog",
+ "total_fluence": 32569.918650979827,
+ "time_axis": "exact"
+}
