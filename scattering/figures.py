@@ -1,12 +1,13 @@
 """
-figures.py -- Figures 1-3 of the paper (vector PDF + PNG preview).
+figures.py -- Figures 1 and 2 of the final draft (vector PDF + PNG preview).
 
-Figure 1 needs the per-channel arrival times from the arrival-time pipeline
-(pipe_instr/out/instr_subdf.csv and instr_geom.json); it is skipped if they
-are absent.
-
-Sources: injected/plotted spectral envelope S(nu) is the running-power-law
-model of the Second CHIME/FRB Catalog (CHIME/FRB Collaboration 2026), in the convention of fitburst (Fonseca et al. 2024, ApJS; arXiv:2311.05829).
+Figure 1 includes the advisor's final Figure-1 requests (email of 11 Oct):
+  * panel (b) dashed-curve label  t - mu = tau_ref (nu/nu_ref)^alpha
+  * panel (c): masked intervals drawn as the same grey bands as panel (b),
+    legend says "unmasked spectrum", excluded sub-band marked
+  * "(c)" label moved off the blue curve (top right)
+Figure 2 applies the final draft's red note: the dotted reference curves are
+bold, drawn above the fits, and the "dof" label is removed from chi2_red,PL.
 """
 import json
 import os
@@ -60,6 +61,8 @@ def load_toas(burst):
     t = t0 + (d["t_emg_hwhm"].values - t0) * fac
     terr = d["t_emg_hwhm_err"].values * fac
     sl, sle, rchi = g["dtdnus"][0][:3]
+    if L.PIPELINE_TIME_AXIS:                             # draft convention: quote the raw slope
+        return d["freqs"].values, t, terr, (sl, sle, rchi)
     return d["freqs"].values, t, terr, (sl * fac, sle * fac, rchi)   # same stretch removed
 
 
@@ -113,6 +116,7 @@ def figure1(burst, fb, res, s):
     fig = plt.figure(figsize=(7.3, 7.5))
     gs = fig.add_gridspec(3, 2, height_ratios=[1.0, 3.2, 1.15], width_ratios=[3.2, 1.0],
                           hspace=0.12, wspace=0.06, left=0.10, right=0.985, top=0.985, bottom=0.07)
+    gs_b = gs[1:, :]
     axa = fig.add_subplot(gs[0, 0])
     axb = fig.add_subplot(gs[1, 0], sharex=axa)
     axc = fig.add_subplot(gs[1, 1], sharey=axb)
@@ -239,7 +243,7 @@ def _tau_panel(ax, axr, res, which, color, marker, label_fit, panel):
     nur = res["nu_ref"]
     xx = np.linspace(405, 760, 300)
     # alpha = -4 reference: bold round dots drawn above the fitted curve, which it
-    # nearly coincides with in panel (a)
+    # nearly coincides with in panel (a) (advisor's Figure 2 note)
     ax.plot(xx, pl["ref"] * (xx / nur) ** -4.0, color="black", lw=2.2, ls=DOTS,
             dash_capstyle="round", zorder=2.6, label=r"$\alpha=-4$")
     ax.plot(xx, pl["ref"] * (xx / nur) ** pl["index"], color=color, lw=1.6, zorder=2.2, label=label_fit)
@@ -329,12 +333,8 @@ def figure2(res, wl, s):
 
 def make_all(burst, fb, res, wl, s):
     os.makedirs(OUT, exist_ok=True)
-    figs = [("frb20210415C_subband", figure2(res, wl, s))]
-    if os.path.exists(TOA_CSV) and os.path.exists(TOA_GEOM):
-        figs.insert(0, ("frb20210415C_waterfall", figure1(burst, fb, res, s)))
-    else:
-        print("Figure 1 skipped: run the arrival-time pipeline first (pipe_instr/)")
-    for name, fig in figs:
+    for name, fig in (("frb20210415C_waterfall", figure1(burst, fb, res, s)),
+                      ("frb20210415C_subband", figure2(res, wl, s))):
         fig.savefig(os.path.join(OUT, name + ".pdf"))
         fig.savefig(os.path.join(OUT, name + ".png"), dpi=150)
         plt.close(fig)
@@ -355,7 +355,7 @@ def figure3(measured):
     g = d.groupby("alpha_inj")
     al = np.array(sorted(g.groups))
     for col, dx, kw, lab in (
-            ("flux_ext", -0.012, dict(fmt="s", color=C_FREE, ms=5), r"flux-weighted $\nu_{\rm eff}$, full window"),
+            ("flux_ext", -0.012, dict(fmt="s", color=C_FREE, ms=5), r"flux-weighted $\nu_{\rm eff}$, extended window"),
             ("flux_obs", 0.0, dict(fmt="o", color=C_FIXED, ms=5), r"flux-weighted $\nu_{\rm eff}$, observed window"),
             ("arith_obs", 0.012, dict(fmt="^", mfc="white", mec="0.3", ecolor="0.3", ms=6),
              r"arithmetic-mean $\nu$, observed window")):
@@ -365,7 +365,7 @@ def figure3(measured):
     ax.set_xlim(-4.42, -3.58)
     ax.set_ylim(-4.42, -3.58)
     ax.set_xlabel(r"Injected $\alpha$")
-    ax.set_ylabel(r"Recovered $\alpha$ (width free)")
+    ax.set_ylabel(r"Recovered $\alpha$ (free-width)")
     ax.legend(loc="lower right", fontsize=7.6, framealpha=0.9)
     panel_label(ax, "(a)")
 
@@ -373,7 +373,7 @@ def figure3(measured):
     xl = np.linspace(410, 760, 300)
     bx.plot(xl, float(z["tau_ref"]) * (xl / float(z["nu_ref"])) ** -4.0, color="black", lw=1.4,
             label=r"injected $\tau\propto\nu^{-4}$")
-    for key, dx, kw, lab in (("ext", -3.0, dict(fmt="s", color=C_FREE, ms=5), "full window"),
+    for key, dx, kw, lab in (("ext", -3.0, dict(fmt="s", color=C_FREE, ms=5), "extended window"),
                              ("obs", 3.0, dict(fmt="o", color=C_FIXED, ms=5), "observed window")):
         arr = z[key]
         med = np.nanmedian(arr, 0)
