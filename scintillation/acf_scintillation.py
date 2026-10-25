@@ -210,7 +210,10 @@ def analyse_block(sb, sgb, cb, okb, res, fc, nlag, verbose=False,
 
     lags, acf, npair = acf_mean_product(sb, okb, nl)
     e_noise = acf_noise_errors(sb, sgb, okb, nl)
-    _, acf_c, _ = acf_mean_product(np.abs(cb) + np.abs(cb).mean(), okb, nl)
+    # Off-pulse control, offset by the on-pulse block mean so that its ACF is
+    # normalised exactly like the on-pulse ACF (fractional deviations of the
+    # burst spectrum), rather than by the control's own noise level.
+    _, acf_c, _ = acf_mean_product(cb + sb[okb].mean(), okb, nl)
     e_ctrl = np.full(nl, np.nanstd(acf_c[nl // 3:]))
     lag_mhz = lags * res
 
@@ -320,7 +323,7 @@ def analyse_block(sb, sgb, cb, okb, res, fc, nlag, verbose=False,
 def lag_structure(results, spec_ctrl, res, kmax=8, period=16):
     """Correlated structure at short lags (1..kmax channels): per block, the
     mean envelope-subtracted on-pulse ACF and the largest |ACF| of the
-    off-pulse control (as normalised in analyse_block). Then a test for an
+    off-pulse control, both normalised by the on-pulse block mean. Then a test for an
     upchannelisation ripple: each block's envelope-subtracted fractional
     spectrum is folded on the 16-channel period (phase = absolute channel
     index mod 16); a ripple common to the band would give folded patterns that
@@ -334,9 +337,9 @@ def lag_structure(results, spec_ctrl, res, kmax=8, period=16):
         env = smooth(sb, okb, max(5.0, SMOOTH_FRAC * n))
         flat = np.where(okb & np.isfinite(env), sb - env, 0.0)
         _, acf_f, _ = acf_mean_product(flat + sb[okb].mean(), okb, kmax)
-        _, acf_c, _ = acf_mean_product(np.abs(cb) + np.abs(cb).mean(), okb, kmax)
+        _, acf_c, _ = acf_mean_product(cb + sb[okb].mean(), okb, kmax)   # same normalisation as on-pulse
         print(f"  {r['freqs'][0]:.1f} MHz: on-pulse mean ACF {acf_f.mean():.3f}, "
-              f"control max |ACF| {np.abs(acf_c).max():.4f}")
+              f"control mean ACF {acf_c.mean():+.3f}, control max |ACF| {np.abs(acf_c).max():.4f}")
         phase = np.arange(r["a"], r["b"] + 1) % period
         for key, x in (("on", sb), ("control", cb + sb[okb].mean())):
             e = smooth(x, okb, max(5.0, SMOOTH_FRAC * n))
