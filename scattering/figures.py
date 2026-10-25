@@ -61,8 +61,6 @@ def load_toas(burst):
     t = t0 + (d["t_emg_hwhm"].values - t0) * fac
     terr = d["t_emg_hwhm_err"].values * fac
     sl, sle, rchi = g["dtdnus"][0][:3]
-    if L.PIPELINE_TIME_AXIS:                             # draft convention: quote the raw slope
-        return d["freqs"].values, t, terr, (sl, sle, rchi)
     return d["freqs"].values, t, terr, (sl * fac, sle * fac, rchi)   # same stretch removed
 
 
