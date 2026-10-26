@@ -295,7 +295,7 @@ def figure2(res, wl, s):
     axB.plot(xx, a9["ref"] * (xx / nur) ** a9["index"], color=C_WIDTH, lw=1.6,
              label=rf"all nine: $\beta={a9['index']:.2f}\pm{a9['index_err']:.2f}$")
     axB.plot(xx, ab["ref"] * (xx / nur) ** ab["index"], color=C_FREE, ls="--", lw=1.6,
-             label=rf"$\nu_{{\rm eff}}>440$ MHz: $\beta={ab['index']:.2f}\pm{ab['index_err']:.2f}$")
+             label=rf"$\nu_{{{{\rm eff}},j}}>440$ MHz: $\beta={ab['index']:.2f}\pm{ab['index_err']:.2f}$")
     axB.plot(xx, ab["ref"] * (xx / nur) ** -1.0, color="black", ls=DOTS, lw=2.0, dash_capstyle="round",
              zorder=2.6, label=r"$\beta=-1$ (same normalisation)")
     axB.axhline(res["sigma_fixed"], color="#8c6d46", ls="-.", lw=1.2,
@@ -307,7 +307,7 @@ def figure2(res, wl, s):
     axB.set_xlim(398, 752)
     axB.set_ylim(0.78, 2.55)
     axB.set_xlabel("Frequency (MHz)")
-    axB.set_ylabel("Intrinsic width (ms)")
+    axB.set_ylabel("Gaussian-component width (ms)")
     axB.legend(loc="upper right", fontsize=8.3, framealpha=0.9)
     panel_label(axB, "(b)")
 
